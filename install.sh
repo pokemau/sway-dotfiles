@@ -1,32 +1,29 @@
 #!/bin/bash
 
 # FLATPAKS
-#flatpak install flathub com.discordapp.Discord #discord
+flatpak install flathub com.discordapp.Discord #discord
 
 
 # APPS
-#echo "INSTALLING PACKAGES"
+echo "INSTALLING PACKAGES"
+sudo dnf install ark zsh neovim tmux gh gcc gcc-c++ alacritty cmake nodejs qbittorrent vlc flatseal lxappearance obs-studio qt5ct
 
-#sudo dnf install ark zsh neovim tmux gh gcc gcc-c++ alacritty cmake nodejs qbittorrent vlc flatseal lxappearance obs-studio
+echo "LOG IN TO GITHUB"
+gh auth login
 
-#echo "LOG IN TO GITHUB"
-#gh auth login
-
-
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-
-#cd Downloads
-#git clone https://github.com/pokemau/dotfiles.git
-#cd dotfiles
-
-#cp .tmux.conf .zshrc ~/
-#cp -r .icons/ .themes/ ~/
-
-#cd .config
-#cp -r alacritty dunst nvim rofi sway swaylock waybar ~/.config
+echo "OH MY ZSH"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 
+cd Downloads
+git clone https://github.com/pokemau/dotfiles.git
+cd dotfiles
+
+cp .tmux.conf .zshrc ~/
+cp -r .icons/ .themes/ ~/
+
+cd .config
+cp -r alacritty dunst nvim rofi sway swaylock waybar ~/.config
 
 
 CURSOR="Bibata-Modern-Ice"
