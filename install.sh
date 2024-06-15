@@ -1,12 +1,23 @@
 #!/bin/bash
 
+# APPS
+sudo dnf install ark zsh neovim tmux gh gcc gcc-c++ alacritty 
+cmake nodejs qbittorrent vlc flatseal lxappearance obs-studio qt5ct
+steam fedora-workstation-repositories flatpak
+
+# CHROME
+sudo dnf config-manager --set-enabled google-chrome
+sudo dnf install google-chrome-stable
+
+# VSCODE
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=0\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+dnf check-update
+sudo dnf install code -y
+
 # FLATPAKS
 flatpak install flathub com.discordapp.Discord #discord
 
-
-# APPS
-echo "INSTALLING PACKAGES"
-sudo dnf install ark zsh neovim tmux gh gcc gcc-c++ alacritty cmake nodejs qbittorrent vlc flatseal lxappearance obs-studio qt5ct
 
 echo "LOG IN TO GITHUB"
 gh auth login
@@ -14,16 +25,15 @@ gh auth login
 echo "OH MY ZSH"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-
-cd Downloads
-git clone https://github.com/pokemau/dotfiles.git
+git clone https://github.com/pokemau/sway-dotfiles.git 
 cd dotfiles
 
 cp .tmux.conf .zshrc ~/
 cp -r .icons/ .themes/ ~/
+cp -r fonts/* ~/.local/share/fonts
 
 cd .config
-cp -r alacritty dunst nvim rofi sway swaylock waybar ~/.config
+cp -r alacritty dunst kitty nvim rofi sway swaylock waybar xfce4 ~/.config
 
 
 CURSOR="Bibata-Modern-Ice"
