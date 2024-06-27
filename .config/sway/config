@@ -4,10 +4,10 @@ set $down j
 set $up k
 set $right l
 
-set $browser google-chrome
+set $browser google-chrome-stable
 set $file_manager thunar
 
-set $term alacritty
+set $term kitty
 
 default_border pixel 2
 
@@ -17,7 +17,18 @@ gaps inner 2
 set $rofi_cmd rofi \
         -terminal '$term'
 
-set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+client.focused #d9d9d9 #d9d9d9 #262626 #d9d9d9 #d9d9d9
+
+set $bg #d9d9d9
+client.focused $bg $bg #262626 $bg $bg
+
+set $wallName limbo.jpg
+output * bg ~/Pictures/wallpapers/$wallName fill
+
+
+
+#set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi -show-icons
+set $menu rofi -show drun
 
 
 # ON START
@@ -26,6 +37,7 @@ output eDP-1 position 0 0 res 1366x768
 # exec Discord
 exec flatpak run com.discordapp.Discord
 exec wlsunset -S 0:00 -s 0:00 -t 5000
+exec syncthing
 
 ### KEYBINDS
     # Screenshots
@@ -51,10 +63,6 @@ exec wlsunset -S 0:00 -s 0:00 -t 5000
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 
-#output * bg ~/Pictures/gas_mask.jpg fill
-#output * bg ~/Pictures/samurai_bebop.png fill
-output * bg ~/Pictures/nier_mech.jpg fill
-
 
 
 # INPUT SETTINGS
@@ -73,6 +81,7 @@ input type:pointer {
 
 input type:keyboard {
     repeat_delay 250
+    repeat_rate 50
 }
 
 
@@ -111,6 +120,15 @@ input type:keyboard {
 #
 # Workspaces:
 #
+
+    bindgesture swipe:right workspace prev
+    bindgesture swipe:left workspace next
+
+    bindsym --whole-window {
+        $mod+button4 workspace prev
+        $mod+button5 workspace next
+    }
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2

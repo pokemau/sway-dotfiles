@@ -1,4 +1,4 @@
-// Config //
+
 configuration {
     modi:                        "drun";
     show-icons:                  true;
@@ -19,7 +19,7 @@ window {
     cursor:                      "default";
     spacing:                     0em;
     padding:                     0em;
-    border:                      0em;
+    border:                      2px;
     border-radius:               0em;
     border-color:                transparent;
     background-color:            transparent;
