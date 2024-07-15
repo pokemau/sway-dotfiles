@@ -1,0 +1,7 @@
+
+- install flatpak first
+- fix discord flatpak
+
+
+- edit sway start apps
+

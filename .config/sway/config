@@ -25,19 +25,13 @@ client.focused $bg $bg #262626 $bg $bg
 set $wallName limbo.jpg
 output * bg ~/Pictures/wallpapers/$wallName fill
 
-
-
 #set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi -show-icons
 set $menu rofi -show drun
-
 
 # ON START
 output eDP-1 position 0 0 res 1366x768
 
-# exec Discord
-exec flatpak run com.discordapp.Discord
 exec wlsunset -S 0:00 -s 0:00 -t 5000
-exec syncthing
 
 ### KEYBINDS
     # Screenshots
