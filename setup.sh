@@ -11,3 +11,4 @@ sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=Pack
 
 
 echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
+echo "FREETYPE_PROPERTIES=\"cff:no-stem-darkening=0 autofitter:no-stem-darkening=0\"" >> /etc/environment

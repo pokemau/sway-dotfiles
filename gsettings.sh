@@ -2,7 +2,9 @@
 
 CURSOR="Bibata-Modern-Ice"
 ICON="Tela-circle-purple"
-THEME="Graphite-Mono"
+#THEME="Graphite-Mono"
+THEME="Everforest-Dark-BL-MB"
+
 
 # Theme, icons, cursors & colors
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
@@ -29,11 +31,11 @@ sudo flatpak override --env=ICON_THEME=$CURSOR
 #
 # Fonts
 # gsettings set org.nemo.desktop font "Roboto 10"
-gsettings set org.gnome.desktop.interface font-name "Roboto 10"
-gsettings set org.gnome.desktop.interface document-font-name "Roboto 10"
+gsettings set org.gnome.desktop.interface font-name "Cantarell 11"
+gsettings set org.gnome.desktop.interface document-font-name "Cantarell 11"
 # gsettings set org.cinnamon.desktop.wm.preferences titlebar-font "Sans Bold 10"
-gsettings set org.gnome.desktop.wm.preferences titlebar-font "Roboto Bold 10"
-gsettings set org.gnome.desktop.interface monospace-font-name "Comic Mono 10"
+gsettings set org.gnome.desktop.wm.preferences titlebar-font "Cantarel 11"
+gsettings set org.gnome.desktop.interface monospace-font-name "Hack Nerd Font 11"
 
 # Font render settings
 gsettings set org.gnome.desktop.interface font-antialiasing "rgba"

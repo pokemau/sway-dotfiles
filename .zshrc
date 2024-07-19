@@ -7,6 +7,7 @@ ZSH_THEME="af-magic"
 
 source $ZSH/oh-my-zsh.sh
 
+path+=('/home/mau/.local/bin')
 
 # Helpful aliases
 alias gp='git push'
@@ -15,3 +16,6 @@ alias ga='git add'
 alias gc='git clone'
 alias gcm='git commit -m'
 alias v='nvim'
+alias z='zed'
+
+export PATH

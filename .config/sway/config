@@ -17,9 +17,10 @@ gaps inner 2
 set $rofi_cmd rofi \
         -terminal '$term'
 
-client.focused #d9d9d9 #d9d9d9 #262626 #d9d9d9 #d9d9d9
 
-set $bg #d9d9d9
+#client.focused #d9d9d9 #d9d9d9 #262626 #d9d9d9 #d9d9d9
+
+set $bg #7a7a7a
 client.focused $bg $bg #262626 $bg $bg
 
 set $wallName limbo.jpg
@@ -34,30 +35,29 @@ output eDP-1 position 0 0 res 1366x768
 exec wlsunset -S 0:00 -s 0:00 -t 5000
 
 ### KEYBINDS
-    # Screenshots
-    bindsym $mod+Shift+p exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
-    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy  
+# Screenshots
+bindsym $mod+Shift+p exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy  
 
-    # Toggle Monitor
-    bindsym $mod+p exec swaymsg output eDP-1 disable
-    bindsym $mod+o exec swaymsg output eDP-1 enable
+# Toggle Monitor
+bindsym $mod+p exec swaymsg output eDP-1 disable
+bindsym $mod+o exec swaymsg output eDP-1 enable
 
-    bindsym $mod+d exec $menu
-    bindsym $mod+c exec $browser
-    bindsym $mod+e exec $file_manager
-    bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+bindsym $mod+c exec $browser
+bindsym $mod+e exec $file_manager
+bindsym $mod+Return exec $term
 
-    # Kill focused window
-    bindsym $mod+Shift+q kill
+# Kill focused window
+bindsym $mod+Shift+q kill
 
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
+# Reload the configuration file
+bindsym $mod+Shift+c reload
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-
-
+bindsym $mod+Shift+m exec swaylock -f -c 2e383c
 
 # INPUT SETTINGS
 input * accel_profile flat
@@ -195,6 +195,17 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+#exec swayidle -w \
+#	timeout 10000 'swaylock -f' \
+#	timeout 10 'swaymsg "output * power off"' \
+#	resume 'swaymsg "output * power on"'
+
+exec swayidle -w \
+	timeout 1800 'swaylock -f -c 000000' \
+	timeout 600 'swaymsg "output * dpms off"' \
+		resume 'swaymsg "output * dpms on"' \
+	before-sleep 'swaylock -f -c 000000'
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d

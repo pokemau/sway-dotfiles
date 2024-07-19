@@ -7,11 +7,12 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 # APPS
 sudo dnf install -y ark kitty zsh neovim tmux gh gcc gcc-c++ alacritty \
 cmake nodejs qbittorrent vlc flatseal lxappearance obs-studio qt5ct \
-steam fedora-workstation-repositories cargo
+steam fedora-workstation-repositories cargo dconf-editor gnome-clocks \
+ddccontrol ddccontrol-gui
 
 # CHROME
-sudo dnf config-manager --set-enabled google-chrome
-sudo dnf install google-chrome-stable -y
+#sudo dnf config-manager --set-enabled google-chrome
+#sudo dnf install google-chrome-stable -y
 
 # VSCODE
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -19,12 +20,10 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 dnf check-update
 sudo dnf install code -y
 
-mkdir -p ~/.local/share/fonts
-
 cp -r .icons/ .themes/ .tmux.conf ~/
-cp -r fonts/* ~/.local/share/fonts
+cp -r fonts/ ~/.local/share/
 
-cp -r Wallpapers ~/Pictures
+cp -r wallpapers/ ~/Pictures
 
 cd .config
 cp -r alacritty dunst kitty nvim rofi sway swaylock waybar xfce4 ~/.config
